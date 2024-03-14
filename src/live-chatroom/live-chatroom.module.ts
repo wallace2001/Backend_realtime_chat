@@ -1,8 +1,17 @@
 import { Module } from '@nestjs/common';
-import { LiveChatroomService } from './live-chatroom.service';
+import { JwtService } from '@nestjs/jwt';
+import { PrismaService } from 'src/prisma.sevice';
+import { UserService } from 'src/user/user.service';
 import { LiveChatroomResolver } from './live-chatroom.resolver';
+import { LiveChatroomService } from './live-chatroom.service';
 
 @Module({
-  providers: [LiveChatroomService, LiveChatroomResolver]
+  providers: [
+    LiveChatroomResolver,
+    LiveChatroomService,
+    UserService,
+    PrismaService,
+    JwtService,
+  ],
 })
 export class LiveChatroomModule {}
