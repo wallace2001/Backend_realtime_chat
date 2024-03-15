@@ -18,7 +18,7 @@ export class ChatroomService {
     });
   }
 
-  async createChatroom(name: string, sub: number) {
+  async createChatroom(name: string, ownerId: number, sub: number) {
     const existingChatroom = await this.prisma.chatroom.findFirst({
       where: {
         name,
@@ -30,6 +30,7 @@ export class ChatroomService {
     return this.prisma.chatroom.create({
       data: {
         name,
+        owner: ownerId,
         users: {
           connect: {
             id: sub,
@@ -63,6 +64,7 @@ export class ChatroomService {
       },
     });
   }
+
   async getChatroomsForUser(userId: number) {
     return this.prisma.chatroom.findMany({
       where: {
@@ -88,6 +90,7 @@ export class ChatroomService {
       },
     });
   }
+
   async sendMessage(
     chatroomId: number,
     message: string,
@@ -136,6 +139,7 @@ export class ChatroomService {
 
     return imagePath;
   }
+  
   async getMessagesForChatroom(chatroomId: number) {
     return await this.prisma.message.findMany({
       where: {

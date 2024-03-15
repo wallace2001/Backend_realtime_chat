@@ -10,6 +10,9 @@ export class Chatroom {
   name?: string;
 
   @Field({ nullable: true })
+  owner?: number;
+
+  @Field({ nullable: true })
   createdAt?: Date;
 
   @Field({ nullable: true })

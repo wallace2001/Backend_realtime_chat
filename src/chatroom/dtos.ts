@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @InputType()
 export class CreateChatroomDto {
@@ -7,6 +7,10 @@ export class CreateChatroomDto {
   @IsString()
   @IsNotEmpty({ message: 'Name is required.' })
   name: string;
+  @Field()
+  @IsNumber()
+  @IsNotEmpty({ message: 'Name is required.' })
+  ownerId: string;
   @IsArray()
   @Field(() => [String])
   userIds: string[];

@@ -1,11 +1,11 @@
 import { UseFilters, UseGuards } from '@nestjs/common';
 import {
-    Args,
-    Context,
-    Mutation,
-    Query,
-    Resolver,
-    Subscription,
+  Args,
+  Context,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
 } from '@nestjs/graphql';
 import { Request } from 'express';
 import { GraphqlAuthGuard } from 'src/auth/graphql-auth.guard';
@@ -129,9 +129,10 @@ import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
     @Mutation(() => Chatroom)
     async createChatroom(
       @Args('name') name: string,
+      @Args('ownerId') ownerId: number,
       @Context() context: { req: Request },
     ) {
-      return this.chatroomService.createChatroom(name, context.req.user.sub);
+      return this.chatroomService.createChatroom(name, ownerId, context.req.user.sub);
     }
   
     @Mutation(() => Chatroom)
