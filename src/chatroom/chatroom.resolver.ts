@@ -148,10 +148,12 @@ import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
       return this.chatroomService.getChatroomsForUser(userId);
     }
   
+    @Mutation(() => [Message])
     @Query(() => [Message])
     async getMessagesForChatroom(@Args('chatroomId') chatroomId: number) {
       return this.chatroomService.getMessagesForChatroom(chatroomId);
     }
+
     @Mutation(() => String)
     async deleteChatroom(@Args('chatroomId') chatroomId: number) {
       await this.chatroomService.deleteChatroom(chatroomId);

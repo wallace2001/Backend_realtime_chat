@@ -41,6 +41,7 @@ type Mutation {
   createChatroom(name: String!, ownerId: Float!): Chatroom!
   deleteChatroom(chatroomId: Float!): String!
   enterChatroom(chatroomId: Float!): Boolean!
+  getMessagesForChatroom(chatroomId: Float!): [Message!]!
   leaveChatroom(chatroomId: Float!): Boolean!
   login(loginInput: LoginDto!): LoginResponse!
   logout: String!
